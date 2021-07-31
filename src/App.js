@@ -1,9 +1,13 @@
 import React from "react";
+import Header from "./components/Header";
+import Cart from "./pages/Cart";
+import Photos from "./pages/Photos";
 
 function App() {
   return (
     <div>
-      <h1>Hello World</h1>
+      <Header />
+      <h1>Home Page</h1>
     </div>
   );
 }
