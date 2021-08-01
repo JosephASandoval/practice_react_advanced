@@ -4,7 +4,6 @@ const Context = React.createContext();
 
 function ContextProvider({ children }) {
   // this is a custom component, so make sure you render props.children
-
   const [allPhotos, setAllPhotos] = useState([]);
 
   const url =
@@ -16,7 +15,24 @@ function ContextProvider({ children }) {
       .then((data) => setAllPhotos(data));
   }, []);
 
-  return <Context.Provider value={{ allPhotos }}>{children}</Context.Provider>;
+  function toggleFavorite(id) {
+    const updatedArr = allPhotos.map((photo) => {
+      if (photo.id === id) {
+        // console.log(id);
+        // console.log(!photo.isFavorite);
+        return { ...photo, isFavorite: !photo.isFavorite }; // Here you never modify the original array
+        // photo.isFavorite = !photo.isFavorite // not good, becasue you are modifying state directly. Here you are modifying state in both your new mapped array and your original array due to arrays and objects being pass by reference.
+      }
+      return photo;
+    });
+    setAllPhotos(updatedArr);
+  }
+
+  return (
+    <Context.Provider value={{ allPhotos, toggleFavorite }}>
+      {children}
+    </Context.Provider>
+  );
 }
 
 export { ContextProvider, Context };
