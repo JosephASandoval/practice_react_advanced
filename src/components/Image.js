@@ -25,15 +25,10 @@ function Image({ img, className }) {
   }
 
   function cartIcon() {
-    const cartItem = cartItems.find((item) => item.id === img.id);
+    const isInCart = cartItems.some((item) => item.id === img.id);
 
-    if (isHovered && cartItem) {
-      return (
-        <i
-          className="ri-shopping-cart-fill cart"
-          onClick={() => addToCart(img)}
-        ></i>
-      );
+    if (isInCart) {
+      return <i className="ri-shopping-cart-fill cart"></i>;
     } else if (isHovered) {
       return (
         <i
