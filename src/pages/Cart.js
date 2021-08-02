@@ -24,14 +24,24 @@ function Cart() {
     }, 3000);
   }
 
+  function showButton() {
+    if (cartItems.length > 0) {
+      return (
+        <div className="order-button">
+          <button onClick={placeOrder}>{buttonText}</button>
+        </div>
+      );
+    } else {
+      return <p>You have no items in your cart.</p>;
+    }
+  }
+
   return (
     <main className="cart-page">
       <h1>Check out</h1>
       {cartItemElements}
       <p className="total-cost">Total: {totalCostDisplay}</p>
-      <div className="order-button">
-        <button onClick={placeOrder}>{buttonText}</button>
-      </div>
+      {showButton()}
     </main>
   );
 }
