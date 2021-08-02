@@ -22,7 +22,7 @@ function useHover() {
     };
   }, []);
 
-  return [hovered, ref];
+  return { hovered, ref };
 }
 
 export default useHover;
