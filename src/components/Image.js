@@ -51,7 +51,7 @@ function Image({ img, className }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img src={img.url} className="image-grid" />
+      <img src={img.url} className="image-grid" alt="" />
       {heartIcon()}
       {cartIcon()}
     </div>
