@@ -17,8 +17,10 @@ function useHover() {
     ref.current.addEventListener("mouseleave", leave);
 
     return () => {
-      ref.current.removeEventListener("mouseenter", enter);
-      ref.current.removeEventListener("mouseleave", leave);
+      if (ref.current) {
+        ref.current.removeEventListener("mouseenter", enter);
+        ref.current.removeEventListener("mouseleave", leave);
+      }
     };
   }, []);
 
